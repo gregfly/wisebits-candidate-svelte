@@ -18,7 +18,7 @@ module.exports = (env) => {
     },
 
     output: {
-      path: getPath('public', 'build'),
+      path: getPath('web'),
       filename: isDev ? '[name].js' : '[name].[contenthash].js',
       chunkFilename: isDev ? '[name].js' : '[name].[contenthash].js'
     },
@@ -78,6 +78,27 @@ module.exports = (env) => {
           resolve: {
             fullySpecified: false
           }
+        },
+        {
+          test: /\.less$/,
+          sideEffects: true, // So we don't remove global css
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader
+            },
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: isDev
+              }
+            },
+            {
+              loader: 'less-loader',
+              options: {
+                sourceMap: isDev
+              }
+            }
+          ]
         },
         {
           test: /\.css$/,

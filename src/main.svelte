@@ -3,7 +3,8 @@
   import { Header } from "src/component/header";
   import { List } from "src/component/list";
 
-  import 'src/global.css';
+  import '@uiw/reset.css/reset.less';
+  import 'src/global.less';
   import imagePng from 'src/image/svelte-vertical.png';
 
   const FIRST_NAMES = ['Andy', 'Akashi', 'Dara', 'Thida', 'Joseph', 'Theo']
