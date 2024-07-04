@@ -18,7 +18,7 @@ module.exports = (env) => {
     },
 
     output: {
-      path: getPath('web'),
+      path: getPath('public', 'build'),
       filename: isDev ? '[name].js' : '[name].[contenthash].js',
       chunkFilename: isDev ? '[name].js' : '[name].[contenthash].js'
     },

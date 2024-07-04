@@ -1,70 +1,30 @@
 <script lang="ts">
-  import { people } from "src/store/people";
-  import { Header } from "src/component/header";
-  import { List } from "src/component/list";
+  import { coffeeStore } from 'src/store/coffee';
+  import { AddButton } from 'src/component/add-button';
+  import { CoffeeCard } from 'src/component/coffee-card';
 
   import '@uiw/reset.css/reset.less';
   import 'src/global.less';
-  import imagePng from 'src/image/svelte-vertical.png';
 
-  const FIRST_NAMES = ['Andy', 'Akashi', 'Dara', 'Thida', 'Joseph', 'Theo']
-  const LAST_NAMES = ['Smith', 'Fujita', 'Tang', 'Pil', 'Anderson', 'Alexander']
-
-  function addPerson() {
-    let first = Math.floor(Math.random()*FIRST_NAMES.length);
-    let last = Math.floor(Math.random()*LAST_NAMES.length);
-
-    people.add(`${FIRST_NAMES[first]} ${LAST_NAMES[last]}`);
+  function addCoffee() {
+    coffeeStore.add(3417, "9c772363-8362-48a2-b871-cdbbea018b86", "Blue Enlightenment", "Chiriqui, Panama", "Ethiopian Heirloom", ["crisp", "coating", "black-tea", "peanut", "tobacco"], "juicy", "https://loremflickr.com/500/500/coffee_bean");
   }
+  addCoffee();
 </script>
 
 <style>
- main {
-   display: flex;
-   flex-direction: row;
-   align-items: center;
-   justify-content: center;
-   margin: 0 auto;
-   padding: 10px;
- }
-
- button {
-   padding: 10px;
-   border: none;
-   color: #fff;
-   background-color: #f75959;
-   cursor: pointer;
- }
-
- .img-container {
-   text-align: center;
- }
-
- .img-container img {
-   height: 400px;
- }
-
+main {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
+  gap: 24px;
+}
 </style>
 
 <main>
-  <div>
-    <h1>This is the Parent component</h1>
-    <p>
-      The parent has access to a store that is of course reactive and on button click, will add new names to the store.
-      The names are passed as props to the list component.
-    </p>
-    <button on:click={addPerson}>CLICK ME</button>
-  </div>
-
-  <div>
-    <Header title="This is a Header component" />
-    <List title="This is a List component" names={$people.map(p => p.name)} />
-  </div>
-
-  <div class="box">
-    <h1>This is a PNG imported using the file-loader</h1>
-    <div class="img-container">
-      <img src={imagePng} alt="Secular Humanist Logo (Wiki Commons)" />
-    </div>
+  {#each $coffeeStore as coffee}
+    <CoffeeCard model={coffee} />
+  {/each}
+  <div class="card">
+    <AddButton label="+" on:click={addCoffee} />
   </div>
 </main>
