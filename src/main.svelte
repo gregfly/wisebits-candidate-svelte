@@ -17,6 +17,10 @@ main {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(288px, 1fr));
   gap: 24px;
+  align-items: center;
+}
+.card-btns {
+  text-align: center;
 }
 </style>
 
@@ -24,7 +28,7 @@ main {
   {#each $coffeeStore as coffee}
     <CoffeeCard model={coffee} />
   {/each}
-  <div class="card">
+  <div class="card card-btns">
     <AddButton label="+" on:click={addCoffee} />
   </div>
 </main>
