@@ -1,14 +1,16 @@
 <script lang="ts">
   import { coffeeStore } from 'src/store/coffee';
+  import { coffeeSource } from 'src/api/coffee';
   import { AddButton } from 'src/component/add-button';
   import { CoffeeCard } from 'src/component/coffee-card';
-  import { Coffee } from 'src/model/coffee.model';
+  import type { ICoffee } from 'src/interface/icoffee.interface';
 
   import '@uiw/reset.css/reset.less';
   import 'src/global.less';
 
   function addCoffee() {
-    coffeeStore.add(new Coffee(3417, "9c772363-8362-48a2-b871-cdbbea018b86", "Blue Enlightenment", "Chiriqui, Panama", "Ethiopian Heirloom", ["crisp", "coating", "black-tea", "peanut", "tobacco"], "juicy", "https://loremflickr.com/500/500/coffee_bean"));
+    coffeeSource.loadOne().then((coffee: ICoffee) => coffeeStore.add(coffee));
+    // coffeeStore.add(new Coffee(3417, "9c772363-8362-48a2-b871-cdbbea018b86", "Blue Enlightenment", "Chiriqui, Panama", "Ethiopian Heirloom", ["crisp", "coating", "black-tea", "peanut", "tobacco"], "juicy", "https://loremflickr.com/500/500/coffee_bean"));
   }
   addCoffee();
 </script>

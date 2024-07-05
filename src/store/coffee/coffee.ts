@@ -1,5 +1,5 @@
 import { writable, type Readable } from 'svelte/store';
-import { ICoffee } from 'src/interface/icoffee.interface';
+import type { ICoffee } from 'src/interface/icoffee.interface';
 
 export class Store implements Readable<ICoffee[]> {
   public subscribe;

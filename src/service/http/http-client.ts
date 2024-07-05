@@ -1,10 +1,12 @@
-export class HttpClient {
-  public static async get<T>(url: string): Promise<T> {
-    const res = await HttpClient.fetch(url);
+import type { IHttpClient } from './ihttp-client.interface';
+
+export class HttpClient implements IHttpClient {
+  public async get<T>(url: string): Promise<T> {
+    const res = await this.fetch(url);
     return res.json() as Promise<T>;
   }
 
-  private static async fetch(url: string): Promise<Response> {
+  private async fetch(url: string): Promise<Response> {
     return fetch(url);
   }
 }
