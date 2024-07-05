@@ -1,30 +1,18 @@
 import { writable, type Readable } from 'svelte/store';
+import { ICoffee } from 'src/interface/icoffee.interface';
 
-export interface Coffee {
-  id: number;
-  uid: string;
-  blend_name: string;
-  origin: string;
-  variety: string;
-  notes: string[];
-  intensifier: string;
-  img: string;
-}
-
-export class Store implements Readable<Coffee[]> {
+export class Store implements Readable<ICoffee[]> {
   public subscribe;
   private readonly update;
 
-  constructor(models: Coffee[] = []) {
-    const { subscribe, update } = writable<Coffee[]>(models);
+  constructor(models: ICoffee[] = []) {
+    const { subscribe, update } = writable<ICoffee[]>(models);
 
     this.subscribe = subscribe;
     this.update = update;
   }
 
-  add(id: number, uid: string, blend_name: string, origin: string, variety: string, notes: string[], intensifier: string, img: string): void {
-    const model = {id, uid, blend_name, origin, variety, notes, intensifier, img};
-    console.log(model);
+  add(model: ICoffee): void {
     this.update(models => [...models, model]);
   }
 

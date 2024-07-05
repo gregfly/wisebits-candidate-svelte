@@ -2,12 +2,13 @@
   import { coffeeStore } from 'src/store/coffee';
   import { AddButton } from 'src/component/add-button';
   import { CoffeeCard } from 'src/component/coffee-card';
+  import { Coffee } from 'src/model/coffee.model';
 
   import '@uiw/reset.css/reset.less';
   import 'src/global.less';
 
   function addCoffee() {
-    coffeeStore.add(3417, "9c772363-8362-48a2-b871-cdbbea018b86", "Blue Enlightenment", "Chiriqui, Panama", "Ethiopian Heirloom", ["crisp", "coating", "black-tea", "peanut", "tobacco"], "juicy", "https://loremflickr.com/500/500/coffee_bean");
+    coffeeStore.add(new Coffee(3417, "9c772363-8362-48a2-b871-cdbbea018b86", "Blue Enlightenment", "Chiriqui, Panama", "Ethiopian Heirloom", ["crisp", "coating", "black-tea", "peanut", "tobacco"], "juicy", "https://loremflickr.com/500/500/coffee_bean"));
   }
   addCoffee();
 </script>
