@@ -5,13 +5,18 @@
     import { AddButton } from 'src/component/add-button';
     import { CoffeeCard, CoffeeCardSk } from 'src/component/coffee-card';
     import type { ICoffee } from 'src/interface/icoffee.interface';
+    import { waitFor, WaitForPromise  } from 'src/utils';
 
     let coffeePromise: Promise<ICoffee> = null;
+    let waitPromise: WaitForPromise = null;
     function addCoffee() {
         coffeePromise = coffeeSource.loadOne().then((coffee: ICoffee) => {
             coffeeStore.add(coffee);
             return coffee;
         });
+        waitPromise && waitPromise.cancel();
+        waitPromise = waitFor(30000);
+        waitPromise.then(() => addCoffee());
     }
     onMount(() => addCoffee());
   </script>

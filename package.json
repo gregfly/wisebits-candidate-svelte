@@ -1,11 +1,11 @@
 {
-  "name": "svelte-webpack-template",
-  "version": "0.0.0",
-  "author": "Sony Seng",
-  "description": "Project template for Svelte + Webpack + Typescript project",
+  "name": "wisebits-candidate-svelte",
+  "version": "1.0.0",
+  "author": "Volkov Grigorii",
+  "description": "Тестовое задание Svelte + Webpack + Typescript",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sonyseng/svelte-webpack-template"
+    "url": "https://github.com/gregfly/wisebits-candidate-svelte"
   },
   "license": "MIT",
   "engines": {
