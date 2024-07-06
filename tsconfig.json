@@ -3,6 +3,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "types": ["svelte", "jest", "testing-library__jest-dom"],
+    "experimentalDecorators": true,
     "paths": {
       "src/*": ["src/*"]
     }
