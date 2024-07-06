@@ -1,8 +1,7 @@
-import type { IHttpClient } from 'src/service/http';
 import type { ICoffeeResponse } from './icoffee-response.interface';
 import type { ICoffee } from 'src/interface/icoffee.interface';
 import { Coffee } from 'src/model/coffee.model';
-import { httpClient } from 'src/service/http';
+import { httpClient, type IHttpClient } from 'src/service/http';
 import { sleep } from 'src/utils';
 
 export class Source {
