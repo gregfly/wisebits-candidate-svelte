@@ -20,7 +20,8 @@ module.exports = (env) => {
     output: {
       path: getPath('public', 'build'),
       filename: isDev ? '[name].js' : '[name].[contenthash].js',
-      chunkFilename: isDev ? '[name].js' : '[name].[contenthash].js'
+      chunkFilename: isDev ? '[name].js' : '[name].[contenthash].js',
+      assetModuleFilename: isDev ? 'assets/[name][ext]' : 'assets/[hash][ext]'
     },
 
     optimization: {
@@ -117,8 +118,7 @@ module.exports = (env) => {
         },
         {
           test: /\.(png|svg|jpg|gif)$/,
-          loader: 'file-loader',
-          options: { name: isDev ? '[name].[ext]' : '[name].[contenthash].[ext]', outputPath: 'image' }
+          type: 'asset/resource'
         }
       ]
     },

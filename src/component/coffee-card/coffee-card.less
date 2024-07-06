@@ -1,0 +1,55 @@
+.card-coffee {
+    border: 1px solid #96969f;
+    background-color: #fff;
+  
+    & > .head {
+      position: relative;
+  
+      & > img {
+        display: block;
+        object-fit: cover;
+        max-width: 100%;
+        max-height: 250px;
+        height: auto;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        background-image: url(src/image/img-placeholder.png);
+      }
+      & > .label {
+        position: absolute;
+        color: #fff;
+        right: 0;
+        padding: 2px 10px;
+        margin: 6px;
+        background-color: rgb(0 0 0 / 50%);
+      }
+    }
+    & > .body {
+      padding: 5px 10px 0;
+      margin: 0 0 10px;
+      color: #000;
+  
+      & > * {
+        padding: 2px 0;
+      }
+      & > .origin {
+        color: #989898;
+      }
+    }
+    & > .tags {
+      white-space: nowrap;
+      padding: 0 10px;
+      margin: 0 0 17px;
+      @media (hover: none) {
+        overflow-x: auto;
+      }
+      @media (hover: hover) {
+        overflow-x: hidden;
+        &:hover {
+          overflow-x: auto;
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
