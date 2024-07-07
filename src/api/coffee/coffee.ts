@@ -11,9 +11,8 @@ export class Source {
 
   @retryFor(3, 1000)
   async loadOne(): Promise<ICoffee> {
-    return this.http.get<ICoffeeResponse>('https://random-data-api.com/api/coffee/random_coffee').then((r: ICoffeeResponse) => {
-      return new Coffee(r.id, r.uid, r.blend_name, r.origin, r.variety, r.notes, r.intensifier, 'https://loremflickr.com/500/500/coffee_bean');
-    });
+    const r = await this.http.get<ICoffeeResponse>('https://random-data-api.com/api/coffee/random_coffee');
+    return new Coffee(r.id, r.uid, r.blend_name, r.origin, r.variety, r.notes, r.intensifier, 'https://loremflickr.com/500/500/coffee_bean');
   }
 }
 

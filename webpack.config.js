@@ -44,7 +44,7 @@ module.exports = (env) => {
         svelte: getPath('node_modules', 'svelte'),
         src: getPath('src')
       },
-      extensions: ['.ts', '.mjs', '.js', '.css', '.svelte'],
+      extensions: ['.ts', '.mjs', '.js', '.css', '.less', '.svelte'],
       mainFields: ['svelte', 'browser', 'module', 'main']
     },
 

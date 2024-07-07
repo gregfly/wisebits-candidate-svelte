@@ -1,0 +1,1 @@
+export { default as BtnsCard } from "./btns-card.svelte";
