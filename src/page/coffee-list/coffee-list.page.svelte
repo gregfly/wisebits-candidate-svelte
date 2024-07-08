@@ -1,6 +1,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import { coffeeStore } from 'src/store/coffee';
+  import { notificationStore } from 'src/store/notification';
   import { coffeeSource } from 'src/api/coffee';
   import { CoffeeCard, CoffeeCardSk } from 'src/component/coffee-card';
   import { BtnsCard } from 'src/component/btns-card';
@@ -11,19 +12,22 @@
   let coffeePromise: Promise<ICoffee> = null;
   let waitPromise: WaitForPromise = null;
   function addCoffee() {
-      coffeePromise = coffeeSource.loadOne().then((coffee: ICoffee) => {
-          coffeeStore.add(coffee);
-          return coffee;
-      });
-      waitPromise && waitPromise.cancel();
-      waitPromise = waitFor(30000);
-      waitPromise.then(() => addCoffee());
+    waitPromise && waitPromise.cancel();
+    coffeePromise = coffeeSource.loadOne().then((coffee: ICoffee) => {
+      coffeeStore.add(coffee);
+      return coffee;
+    }).catch(reason => {
+      notificationStore.show({message: 'Ошибка сети... Повторите попытку позднее.', duration: 2000});
+      return reason;
+    });
+    waitPromise = waitFor(30000);
+    waitPromise.then(() => addCoffee());
   }
   onMount(() => addCoffee());
 </script>
 
 <div class="coffee-list-page">
-  {#each $coffeeStore as coffee}
+  {#each $coffeeStore as coffee (coffee.uid)}
     <CoffeeCard model={coffee} />
   {/each}
   {#await coffeePromise}

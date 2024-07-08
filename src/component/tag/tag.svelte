@@ -12,4 +12,4 @@
   const curColor = COLORS[Math.floor(Math.random() * COLORS.length)];
 </script>
 
-<span style="--font-color:{curColor.font};--bg-color:{curColor.bg}">{label}</span>
+<span class="tag" style="--font-color:{curColor.font};--bg-color:{curColor.bg}">{label}</span>

@@ -15,10 +15,6 @@ export class Store implements Readable<ICoffee[]> {
   add(model: ICoffee): void {
     this.update(models => [...models, model]);
   }
-
-  length() {
-    return this.length();
-  }
 }
 
 export default new Store([]);

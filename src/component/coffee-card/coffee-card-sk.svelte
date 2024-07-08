@@ -1,8 +1,9 @@
 <script lang="ts">
+  import { fade } from 'svelte/transition'
   import './coffee-card.less';
 </script>
 
-<div class="card card-coffee">
+<div class="card card-coffee" in:fade={{duration: 100}}>
   <div class="head">
     <img width="500" height="500" alt="" />
   </div>
